@@ -51,10 +51,10 @@ RUN mkdir -p /go/src/github.com/jenkins-x-labs
 
 WORKDIR /go/src/github.com/jenkins-x-labs
 
-RUN git clone https://github.com/jenkins-x/bdd-jx.git && \
-  cd bdd-jx && \
-  make testbin && \
-  mv build/bddjx /out/bddjx
+#RUN git clone https://github.com/jenkins-x/bdd-jx.git && \
+#  cd bdd-jx && \
+#  make testbin && \
+#  mv build/bddjx /out/bddjx
 
 RUN git clone https://github.com/jenkins-x/jx.git && \
   cd jx && \
