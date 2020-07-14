@@ -27,7 +27,7 @@ RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar
 ENV GIT_VERSION 2.21.1
 RUN yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel && \
     yum install -y gcc perl-ExtUtils-MakeMaker make && \
-    yum -y install wget
+    yum install -y wget
 RUN cd /usr/src  && \
     curl -LO https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz  && \
     tar xzf git-${GIT_VERSION}.tar.gz  && \
