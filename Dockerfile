@@ -26,7 +26,8 @@ RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar
 # git
 ENV GIT_VERSION 2.21.1
 RUN yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel && \
-    yum install -y gcc perl-ExtUtils-MakeMaker make
+    yum install -y gcc perl-ExtUtils-MakeMaker make && \
+    yum -y install wget
 RUN cd /usr/src  && \
     curl -LO https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz  && \
     tar xzf git-${GIT_VERSION}.tar.gz  && \
@@ -82,7 +83,7 @@ ENV JX_HELM3 "true"
 ENV DIFF_VERSION 3.1.1
 RUN helm plugin install https://github.com/databus23/helm-diff --version ${DIFF_VERSION} && \
     helm plugin install https://github.com/aslafy-z/helm-git.git && \
-    helm plugin install https://github.com/mumoshu/helm-x --version v0.8.1
+    helm plugin install https://github.com/mumoshu/helm-x 
 
 # hack copying in a custom built bdd-jx and a custom jx from this PR as needed but not merged yet https://github.com/jenkins-x/jx/pull/6664
 # COPY build/jx /usr/local/bin/jx
