@@ -18,12 +18,11 @@ RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBEC
 # kubectl kustomize
 ENV KUBECTL_VERSION 1.16.0
 ENV KUSTOMIZE_PLUGIN_HOME /root/.config/kustomize/plugin
-RUN mkdir -p /root/.config/kustomize/plugin && \ 
-  curl -f -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar xzv  && \
+RUN curl -f -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar xzv  && \
   cp kustomize /out/kustomize && \
   mv kustomize /usr/local/bin/kustomize && \
   chmod +x /out/kustomize && \
-
+  mkdir -p /root/.config/kustomize/plugin
 # helm 3
 ENV HELM3_VERSION 3.2.0
 RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv && \
