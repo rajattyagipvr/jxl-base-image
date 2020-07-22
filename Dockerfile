@@ -90,6 +90,8 @@ ENV HELM_PLUGINS /root/.cache/helm/plugins/
 ENV JX_HELM3 "true"
 ENV KUSTOMIZE_PLUGIN_HOME /root/.config/kustomize/plugin
 
+RUN mkdir -p /root/.config/kustomize/plugin
+
 ENV DIFF_VERSION 3.1.1
 RUN helm plugin install https://github.com/databus23/helm-diff --version ${DIFF_VERSION} && \
     helm plugin install https://github.com/aslafy-z/helm-git.git && \
