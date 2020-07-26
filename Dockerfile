@@ -66,7 +66,7 @@ WORKDIR /go/src/github.com/jenkins-x-labs
 #  make testbin && \
 #  mv build/bddjx /out/bddjx
 
-RUN git clone https://github.com/jenkins-x/jx.git && \
+RUN git clone https://github.com/rajattyagipvr/jx.git && \
   cd jx && \
   git checkout multicluster && \
   make linux && \
