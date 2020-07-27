@@ -24,7 +24,7 @@ RUN curl -f -L https://github.com/kubernetes-sigs/kustomize/releases/download/ku
   chmod +x /out/kustomize && \
   mkdir -p /root/.config/kustomize/plugin
 # helm 3
-ENV HELM3_VERSION 3.2.0
+ENV HELM3_VERSION 3.2.4
 RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv && \
   cp linux-386/helm /out/ && \
   mv linux-386/helm /usr/local/bin/helm && \

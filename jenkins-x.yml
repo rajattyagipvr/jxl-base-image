@@ -29,14 +29,43 @@ pipelineConfig:
   pipelines:
     pullRequest:
       pipeline:
+        # rajat add options sections to allow eks/ecr pushing of images
         options:
           containerOptions:
+            env:
+            - name: DOCKER_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: docker.registry
+                  name: jenkins-x-docker-registry
+            - name: GIT_AUTHOR_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_AUTHOR_NAME
+              value: jenkins-x-bot
+            - name: GIT_COMMITTER_EMAIL
+              value: jenkins-x@googlegroups.com
+            - name: GIT_COMMITTER_NAME
+              value: jenkins-x-bot
+            - name: XDG_CONFIG_HOME
+              value: /home/jenkins
+            name: ""
             resources:
-              limits:
-                memory: 6Gi
               requests:
+                cpu: 800m
                 memory: 4Gi
-                cpu: 800m   
+            securityContext:
+              privileged: true
+            volumeMounts:
+            - mountPath: /home/jenkins
+              name: workspace-volume
+            - mountPath: /kaniko/.docker
+              name: jenkins-docker-cfg
+          volumes:
+          - emptyDir: {}
+            name: workspace-volume
+          - name: jenkins-docker-cfg
+            secret:
+              secretName: jenkins-docker-cfg
         agent:
           image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
         stages:
@@ -60,39 +89,22 @@ pipelineConfig:
                 value: /secrets/kaniko/kaniko-secret.json
             steps:
             # build base images
-            - name: build-base
-              image: gcr.io/jenkinsxio/builder-go:0.0.0-SNAPSHOT-PR-7104-79
-              command: /workspace/source/builder-base/build-ng.sh
+            # - name: build-base
+            #   image: gcr.io/jenkinsxio/builder-go:0.0.0-SNAPSHOT-PR-7104-79
+            #   command: /workspace/source/builder-base/build-ng.sh
             - name: build-and-push-base
               command: /kaniko/executor
               args:
                 - --dockerfile=/workspace/source/builder-base/Dockerfile.base.generated
                 - --destination=702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/jenkins-x-builders-base:${inputs.params.version}
                 - --context=/workspace/source
-                #- --cache-repo=gcr.io/jenkinsxio/cache
-                #- --cache=true
-                #- --cache-dir=/workspace
-            # - name: build-and-push-ruby-base
-            #   command: /kaniko/executor
-            #   args:
-            #     - --dockerfile=/workspace/source/builder-base/Dockerfile.ruby.generated
-            #     - --destination=gcr.io/jenkinsxio/builder-rubybase:${inputs.params.version}
-            #     - --context=/workspace/source
-            #     - --cache-repo=gcr.io/jenkinsxio/cache
-            #     - --cache=true
-            #     - --cache-dir=/workspace
-            # - name: build-and-push-swift-base
-            #   command: /kaniko/executor
-            #   args:
-            #     - --dockerfile=/workspace/source/builder-base/Dockerfile.swift.generated
-            #     - --destination=gcr.io/jenkinsxio/builder-swiftbase:${inputs.params.version}
-            #     - --context=/workspace/source
-            #     - --cache-repo=gcr.io/jenkinsxio/cache
-            #     - --cache=true
-            #     - --cache-dir=/workspace
+                - --cache-repo=702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache
+                - --cache=true
+                - --cache-dir=/workspace
 
     release:
       pipeline:
+        # rajat add options sections to allow eks/ecr pushing of images
         options:
           containerOptions:
             env:
@@ -165,40 +177,18 @@ pipelineConfig:
               command: /kaniko/executor
               args:
                 - --dockerfile=/workspace/source/Dockerfile
-                - --destination=702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/jxl-base-image:${inputs.params.version}
+                - --destination=702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/jxl-base:${inputs.params.version}
                 - --context=/workspace/source
                 - --skip-tls-verify-registry=702769831180.dkr.ecr.ap-south-1.amazonaws.com
                 - --cache-repo=702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache
                 - --cache=true
                 - --cache-dir=/workspace
-            # - name: build-and-push-ruby-base
-            #   command: /kaniko/executor
-            #   args:
-            #     - --dockerfile=/workspace/source/builder-base/Dockerfile.ruby.generated
-            #     - --destination=gcr.io/jenkinsxio/builder-rubybase:${inputs.params.version}
-            #     - --context=/workspace/source
-            #     - --cache-repo=gcr.io/jenkinsxio/cache
-            #     - --cache=true
-            #     - --cache-dir=/workspace
-            # - name: build-and-push-swift-base
-            #   command: /kaniko/executor
-            #   args:
-            #     - --dockerfile=/workspace/source/builder-base/Dockerfile.swift.generated
-            #     - --destination=gcr.io/jenkinsxio/builder-swiftbase:${inputs.params.version}
-            #     - --context=/workspace/source
-            #     - --cache-repo=gcr.io/jenkinsxio/cache
-            #     - --cache=true
-            #     - --cache-dir=/workspace
-
-            # # Create the release notes
-            # - name: changelog
-            #   image: gcr.io/jenkinsxio/builder-go
-            #   command: ./changelog.sh
-
-            # # update downstream dependencies
-            # - name: update-bot
-            #   image: gcr.io/jenkinsxio/builder-maven
-            #   command: ./update-bot.sh
-
+            
+          - name: promote
+            steps:
+            - command: ./promote.sh
+              dir: /workspace/source
+              name: promote-release
+              image: gcr.io/jenkinsxio/builder-go
 
 
