@@ -1,0 +1,203 @@
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-credential-initializer-mjghc[0m
+{"level":"warn","ts":1595860996.532659,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1595860996.5633922,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-working-dir-initializer-4ncqc[0m
+{"level":"warn","ts":1595860999.060333,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595860999.1352348,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-create-dir-workspace-xzpcm[0m
+{"level":"warn","ts":1595861011.4793868,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595861011.4804208,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p source\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-git-source-rajattyagipvr-jxl-base-image-ma-2cxvx-tlmt7[0m
+{"level":"warn","ts":1595861012.931832,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1595861015.3747659,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/*************/**l-base-image.git @ v0.1.63 in path /workspace/source"}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-build-and-push-base[0m
+[36mINFO[0m[0000] Downloading base image centos:7              
+2020/07/27 14:43:39 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[0002] Error while retrieving image from cache: getting file info: stat /workspace/sha256:c2f1d5a9c0a81350fa0ad7e1eee99e379d75fe53823d44b5469eb2eb6092c941: no such file or directory 
+[36mINFO[0m[0002] Downloading base image centos:7              
+2020/07/27 14:43:42 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[0004] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:791ab6c76098e8946e681d879b31a588846ec294e45e4af7996863bdefb97d4f... 
+[36mINFO[0m[0005] Using caching version of cmd: RUN mkdir /out 
+[36mINFO[0m[0005] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:d226914541ad5882d60bf168885a34af74ef1f668b3e7520abb118079390dbd3... 
+[36mINFO[0m[0005] Using caching version of cmd: RUN curl -LO https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 &&   mv helmfile_linux_amd64 /out/helmfile &&   chmod +x /out/helmfile 
+[36mINFO[0m[0005] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:60a5df702771c4996cad6a35467467f335951ae73d224b24f6c713d9ed3285b9... 
+[36mINFO[0m[0006] Using caching version of cmd: RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl &&   mv kubectl /out/kubectl &&   chmod +x /out/kubectl 
+[36mINFO[0m[0006] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:6d1cfa4d6e50579b56e76116d4718d5ad55b21ca1cf122bc2aced8896ea7c660... 
+[36mINFO[0m[0006] Using caching version of cmd: RUN curl -f -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar xzv  &&   cp kustomize /out/kustomize &&   mv kustomize /usr/local/bin/kustomize &&   chmod +x /out/kustomize &&   mkdir -p /root/.config/kustomize/plugin 
+[36mINFO[0m[0006] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:9c3864f4ff4a5ab4797a702d3d2e42d7b0e38e94dc87ec2693ce2c73c08b876b... 
+[36mINFO[0m[0006] Using caching version of cmd: RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv &&   cp linux-386/helm /out/ &&   mv linux-386/helm /usr/local/bin/helm &&   mkdir -p $HOME/.**/plugins/bin &&   ln -s /usr/local/bin/helm $HOME/.**/plugins/bin/helm-${HELM3_VERSION} 
+[36mINFO[0m[0006] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:cd952e4da767c2776f41ab477bc2e3b3548a7a80d4ec53b227722a44487dd978... 
+[36mINFO[0m[0007] Using caching version of cmd: RUN yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel &&     yum install -y gcc perl-ExtUtils-MakeMaker make &&     yum install -y wget 
+[36mINFO[0m[0007] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:4b28165b617f1674cb28f4849bff0ec56e6352ec3e7780334db9d7aacde340e8... 
+[36mINFO[0m[0007] Using caching version of cmd: RUN cd /usr/src  &&     curl -LO https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz  &&     tar xzf git-${GIT_VERSION}.tar.gz  &&     cd git-${GIT_VERSION} &&     make prefix=/usr/local/git all  &&     make prefix=/usr/local/git install 
+[36mINFO[0m[0007] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:5298875ce29b9d4a417abf36d268c5b1ac9abedf4d093fd95df8fdfeb38f2bbf... 
+[36mINFO[0m[0007] Using caching version of cmd: RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz 
+[36mINFO[0m[0007] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:e7aef1bcc2384fb7d89119ab676e31c0eefd8450ef2abd6e6cc912704d79029a... 
+[36mINFO[0m[0007] Using caching version of cmd: RUN mkdir -p /usr/local/gcloud   && tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz   && /usr/local/gcloud/google-cloud-sdk/install.sh &&   /usr/local/gcloud/google-cloud-sdk/bin/gcloud components install beta &&   /usr/local/gcloud/google-cloud-sdk/bin/gcloud components update 
+[36mINFO[0m[0007] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0007] Taking snapshot of full filesystem...        
+[36mINFO[0m[0008] RUN mkdir /out                               
+[36mINFO[0m[0008] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0008] Taking snapshot of files...                  
+[36mINFO[0m[0008] ENV HELMFILE_VERSION 0.123.0                 
+[36mINFO[0m[0008] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0008] RUN curl -LO https://github.com/roboll/helmfile/releases/download/v${HELMFILE_VERSION}/helmfile_linux_amd64 &&   mv helmfile_linux_amd64 /out/helmfile &&   chmod +x /out/helmfile 
+[36mINFO[0m[0008] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0010] Taking snapshot of files...                  
+[36mINFO[0m[0013] ENV KUBECTL_VERSION 1.16.0                   
+[36mINFO[0m[0013] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0013] RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl &&   mv kubectl /out/kubectl &&   chmod +x /out/kubectl 
+[36mINFO[0m[0013] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0015] Taking snapshot of files...                  
+[36mINFO[0m[0017] ENV KUBECTL_VERSION 1.16.0                   
+[36mINFO[0m[0017] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0017] ENV KUSTOMIZE_PLUGIN_HOME /root/.config/kustomize/plugin 
+[36mINFO[0m[0017] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0017] RUN curl -f -L https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz | tar xzv  &&   cp kustomize /out/kustomize &&   mv kustomize /usr/local/bin/kustomize &&   chmod +x /out/kustomize &&   mkdir -p /root/.config/kustomize/plugin 
+[36mINFO[0m[0017] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0021] Taking snapshot of files...                  
+[36mINFO[0m[0027] ENV HELM3_VERSION 3.2.4                      
+[36mINFO[0m[0027] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0027] RUN curl -f -L https://get.helm.sh/helm-v${HELM3_VERSION}-linux-386.tar.gz | tar xzv &&   cp linux-386/helm /out/ &&   mv linux-386/helm /usr/local/bin/helm &&   mkdir -p $HOME/.**/plugins/bin &&   ln -s /usr/local/bin/helm $HOME/.**/plugins/bin/helm-${HELM3_VERSION} 
+[36mINFO[0m[0027] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0030] Taking snapshot of files...                  
+[36mINFO[0m[0034] ENV GIT_VERSION 2.21.1                       
+[36mINFO[0m[0034] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0034] RUN yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel &&     yum install -y gcc perl-ExtUtils-MakeMaker make &&     yum install -y wget 
+[36mINFO[0m[0034] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0044] Taking snapshot of files...                  
+[36mINFO[0m[0062] RUN cd /usr/src  &&     curl -LO https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz  &&     tar xzf git-${GIT_VERSION}.tar.gz  &&     cd git-${GIT_VERSION} &&     make prefix=/usr/local/git all  &&     make prefix=/usr/local/git install 
+[36mINFO[0m[0062] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0097] Taking snapshot of files...                  
+[36mINFO[0m[0150] RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz 
+[36mINFO[0m[0150] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0151] Taking snapshot of files...                  
+[36mINFO[0m[0152] RUN mkdir -p /usr/local/gcloud   && tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz   && /usr/local/gcloud/google-cloud-sdk/install.sh &&   /usr/local/gcloud/google-cloud-sdk/bin/gcloud components install beta &&   /usr/local/gcloud/google-cloud-sdk/bin/gcloud components update 
+[36mINFO[0m[0152] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0247] Taking snapshot of files...                  
+[36mINFO[0m[0375] Storing source image from stage 0 at path /kaniko/stages/0 
+[36mINFO[0m[0696] Deleting filesystem...                       
+[36mINFO[0m[0754] Downloading base image golang:1.12.17        
+2020/07/27 14:56:14 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[0756] Error while retrieving image from cache: getting file info: stat /workspace/sha256:c489190d31e60400b94cd404e27bb5eec4c484ab606e5b5eff75707d5ec6a2aa: no such file or directory 
+[36mINFO[0m[0756] Downloading base image golang:1.12.17        
+2020/07/27 14:56:16 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[0758] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:cc682d9be93d972f1c26800911196de868ef4116efbfd184cdcf3783d59bc8bf... 
+[36mINFO[0m[0758] Using caching version of cmd: RUN mkdir /out 
+[36mINFO[0m[0758] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:3567664a7cf8688179862493e0892f474963157030505d0779714f26c676d8d3... 
+[36mINFO[0m[0758] Using caching version of cmd: RUN mkdir -p /go/src/github.com/jenkins-x-labs 
+[36mINFO[0m[0758] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:9e3564cdc4858588b4dcdd7cf16b6d98e19d48646c40d90644951d8cf234d8b8... 
+[36mINFO[0m[0758] Using caching version of cmd: RUN git clone https://github.com/*************/**.git &&   cd ** &&   git checkout multicluster &&   make linux &&   mv build/linux/** /out/** 
+[36mINFO[0m[0758] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0758] Taking snapshot of full filesystem...        
+[36mINFO[0m[0758] RUN mkdir /out                               
+[36mINFO[0m[0758] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0758] Taking snapshot of files...                  
+[36mINFO[0m[0758] RUN mkdir -p /go/src/github.com/jenkins-x-labs 
+[36mINFO[0m[0758] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0758] Taking snapshot of files...                  
+[36mINFO[0m[0758] WORKDIR /go/src/github.com/jenkins-x-labs    
+[36mINFO[0m[0758] cmd: workdir                                 
+[36mINFO[0m[0758] Changed working directory to /go/src/github.com/jenkins-x-labs 
+[36mINFO[0m[0758] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0758] RUN git clone https://github.com/*************/**.git &&   cd ** &&   git checkout multicluster &&   make linux &&   mv build/linux/** /out/** 
+[36mINFO[0m[0758] Found cached layer, extracting to filesystem 
+[36mINFO[0m[0848] Taking snapshot of files...                  
+[36mINFO[0m[1007] ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin 
+[36mINFO[0m[1007] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[1007] Storing source image from stage 1 at path /kaniko/stages/1 
+[36mINFO[0m[1187] Deleting filesystem...                       
+[36mINFO[0m[1246] Downloading base image centos:7              
+2020/07/27 15:04:26 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[1249] Error while retrieving image from cache: getting file info: stat /workspace/sha256:c2f1d5a9c0a81350fa0ad7e1eee99e379d75fe53823d44b5469eb2eb6092c941: no such file or directory 
+[36mINFO[0m[1249] Downloading base image centos:7              
+2020/07/27 15:04:28 No matching credentials were found, falling back on anonymous
+[36mINFO[0m[1250] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:b8c95b921b1ea1d334a0b54951bce93cd78d11d261afe040edd8191848b3c3df... 
+[36mINFO[0m[1251] Using caching version of cmd: RUN mkdir -p /root/.config/kustomize/plugin 
+[36mINFO[0m[1251] Checking for cached layer 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/cache:91f353b2be80be86f44b859487c6a1a1f31080910b697584666fea43745f0b17... 
+[36mINFO[0m[1251] Using caching version of cmd: RUN helm plugin install https://github.com/databus23/helm-diff --version ${DIFF_VERSION} &&     helm plugin install https://github.com/aslafy-z/helm-git.git &&     helm plugin install https://github.com/mumoshu/helm-x 
+[36mINFO[0m[1251] Skipping unpacking as no commands require it. 
+[36mINFO[0m[1251] Taking snapshot of full filesystem...        
+[36mINFO[0m[1252] COPY --from=0 /usr/local/git /usr/local/git  
+[36mINFO[0m[1342] Taking snapshot of files...                  
+[36mINFO[0m[1595] COPY --from=0 /usr/bin/make /usr/bin/make    
+[36mINFO[0m[1595] Taking snapshot of files...                  
+[36mINFO[0m[1595] COPY --from=0 /out /usr/local/bin            
+[36mINFO[0m[1604] Taking snapshot of files...                  
+[36mINFO[0m[1610] COPY --from=1 /out /usr/local/bin            
+[36mINFO[0m[1624] Taking snapshot of files...                  
+[36mINFO[0m[1632] COPY --from=0 /usr/local/gcloud /usr/local/gcloud 
+[36mINFO[0m[2202] Taking snapshot of files...                  
+[36mINFO[0m[2237] ENV PATH /usr/local/bin:/usr/local/git/bin:$PATH:/usr/local/gcloud/google-cloud-sdk/bin 
+[36mINFO[0m[2237] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[2237] ENV HELM_PLUGINS /root/.cache/helm/plugins/  
+[36mINFO[0m[2237] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[2237] ENV JX_HELM3 "true"                          
+[36mINFO[0m[2237] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[2237] ENV KUSTOMIZE_PLUGIN_HOME /root/.config/kustomize/plugin 
+[36mINFO[0m[2237] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[2237] RUN mkdir -p /root/.config/kustomize/plugin  
+[36mINFO[0m[2237] Found cached layer, extracting to filesystem 
+[36mINFO[0m[2237] Taking snapshot of files...                  
+[36mINFO[0m[2237] ENV DIFF_VERSION 3.1.1                       
+[36mINFO[0m[2237] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[2237] RUN helm plugin install https://github.com/databus23/helm-diff --version ${DIFF_VERSION} &&     helm plugin install https://github.com/aslafy-z/helm-git.git &&     helm plugin install https://github.com/mumoshu/helm-x 
+[36mINFO[0m[2237] Found cached layer, extracting to filesystem 
+[36mINFO[0m[2239] Taking snapshot of files...                  
+2020/07/27 15:21:02 pushed blob: sha256:5973188a15ff2e66c4b03d9189ec301066e37e85b7623b33d878857082faa71b
+2020/07/27 15:21:02 pushed blob: sha256:0f74d8ab519ddde5d415e14210fbadda835ca032f5016e84c2744710648f52a7
+2020/07/27 15:21:02 pushed blob: sha256:30617df0af48b37595e4531ac2fde0439e9ab6de445165474b6f2249737f98d5
+2020/07/27 15:21:09 pushed blob: sha256:5cab01ef499ca9906c668fdcd2ba5795f469adb4090b02fe7a6626c3cb9a6613
+2020/07/27 15:21:09 pushed blob: sha256:524b0c1e57f8ee5fee01a1decba2f301c324a6513ca3551021264e3aa7341ebc
+2020/07/27 15:21:16 pushed blob: sha256:c58cec5bfead1d5628675586df5c2df5c2fc4222aa642cacb4afbd4a5e1d5c4f
+2020/07/27 15:21:16 pushed blob: sha256:ebefc942bd7766a03479223e64c55c407be13dde063ba304bfcd55a49918501b
+2020/07/27 15:21:43 pushed blob: sha256:8cd0e90b493ae9a8f5bef437e5e9654eeb1d6a5eee77993cd607631b00c51cd7
+2020/07/27 15:23:25 pushed blob: sha256:b60b5f8e46aa1b3d6d1107a0fc67e1d9f74436d06eac0e30b8344e0545c397c1
+2020/07/27 15:23:25 702769831180.dkr.ecr.ap-south-1.amazonaws.com/702769831180/**l-base:0.1.63: digest: sha256:70a0e90003f032b597fd8602a499d9b00095bea096e2400bcc86a19cd8afe84d size: 1579
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-source-mkdir-rajattyagipvr-jxl-base-image-ma-2cxvx-qq5sk[0m
+{"level":"warn","ts":1595863406.8878732,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595863406.8999162,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /pvc/build-base/workspace\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mbuild-base[0m and container [32mstep-source-copy-rajattyagipvr-jxl-base-image-ma-2cxvx-dqt4j[0m
+{"level":"warn","ts":1595863407.065073,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595863407.1020095,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c cp -r source/. /pvc/build-base/workspace\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mpromote[0m and container [32mstep-credential-initializer-qgp7t[0m
+{"level":"warn","ts":1595863425.886142,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1595863425.886659,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mpromote[0m and container [32mstep-working-dir-initializer-9qf58[0m
+{"level":"warn","ts":1595863427.1491878,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595863427.150144,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mpromote[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mpromote[0m and container [32mstep-create-dir-workspace-4jl6l[0m
+{"level":"warn","ts":1595863430.2350507,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595863430.235941,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mpromote[0m and container [32mstep-source-copy-workspace-fbk27[0m
+{"level":"warn","ts":1595863430.4744313,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1595863430.4973338,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c cp -r /pvc/build-base/workspace/. /workspace/source\"; output "}
+
+Showing logs for build [32mrajattyagipvr-jxl-base-image-ma-2cxvx-10[0m stage [32mpromote[0m and container [32mstep-promote-release[0m
+promoting the new version 0.1.63 to downstream repositories
+Using https://github.com/*************/**l-base-image as source for change discovered from git repo in /workspace/source
+error: unable to create pull request: creating git provider for directory /tmp/create-pr990631255: error getting Requirements from TeamSettings to determine if in GitHub app mode: validation failures in requirements from team settings:
+(root): Additional property buildPackURL is not allowed
+environments.0.ingress: Additional property kind is not allowed
+ingress: Additional property kind is not allowed
+[31m
+Pipeline failed on stage 'promote' : container 'step-promote-release'. The execution of the pipeline has stopped.[0m
